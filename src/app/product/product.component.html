@@ -1,0 +1,49 @@
+<p-card>
+    
+    <ng-template pTemplate="header">
+        <h3>
+        <a [title]="'Detalles ' + producto.name">
+        {{ producto.name }}
+        </a>
+        </h3>
+        </ng-template>
+
+        <p *ngIf="producto.description">Descripción: {{
+            producto.description }}
+        </p>
+
+        <button type="button" (click)="compartir()">
+            Share
+        </button>
+
+        <ng-template pTemplate="footer">
+            <app-product-alerts 
+             [producto]="producto"
+             (notify)="onNotify()">
+            </app-product-alerts>
+        </ng-template>
+
+        <p-dialog header="{{producto.name}}" [(visible)]="display">
+            Precio: {{producto.price}}
+
+            <img src="./assets/phones/{{producto.images}}" width="100px" height="100px" alt="Sin imagen">
+            <button type="button" (click)="addToCart(producto)">Buy</button>
+
+            <p-toast position="top-center" style="position: absolute;top: 40px; left: 40px;"> </p-toast>
+            
+          </p-dialog>
+        
+        
+          <button
+            type="button"
+            (click)="showDialog()"
+            icon="pi pi-info-circle"
+            label="Mostrar"
+          >
+          Details
+
+          
+        </button>
+
+        
+</p-card>

@@ -1,0 +1,55 @@
+
+<p-table [value]="users">
+    <ng-template pTemplate="header">
+
+        <div class="Agregar" style=" text-align: right;">
+            <p-button (click)="showDialog()" styleClass="p-button-info"><i class="pi pi-plus" style="color: white"></i>ADD</p-button>
+        </div>
+
+        <tr>
+            <th>Correo</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Options</th>
+            
+            
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+        <tr>
+            <td>{{user.correo}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.password}}</td>
+            
+            <button (click)="deleteUser(user.correo)">DELETE</button>
+        </tr>
+
+        
+        
+    </ng-template>
+
+    
+</p-table>
+
+
+
+<p-dialog [(visible)]="display">
+<form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="correo"> Correo </label>
+      <input id="correo" type="text" formControlName="correo" />
+    </div>
+
+
+    <div>
+      <label for="username"> Username </label>
+      <input id="username" type="text" formControlName="username" />
+    </div>    
+    <div>
+      <label for="password"> Password </label>
+      <input id="password" type="text" formControlName="password" />
+    </div>
+
+    <button class="button" type="submit">Add</button>
+  </form>
+</p-dialog>
