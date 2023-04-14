@@ -24,11 +24,13 @@ import {TableModule} from 'primeng/table';
 import { ProductAdminComponent } from './admin/product-admin/product-admin.component';
 import { ConfirmationService } from 'primeng/api';
 import { UserAdminComponent } from './admin/user-admin/user-admin.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 @NgModule({
   imports: [
     BrowserModule,
+    NgxPayPalModule,
     TableModule,
     SpeedDialModule,
     ButtonModule,

@@ -23,6 +23,7 @@
     "@angular/router": "^15.0.0-rc.1",
     "@auth0/auth0-angular": "^2.0.2",
     "angular-in-memory-web-api": "~0.15.0",
+    "ngx-paypal": "^11.0.0",
     "primeicons": "^6.0.1",
     "primeng": "^15.2.0",
     "rxjs": "~7.8.0",
