@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { CartService } from '../cart.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
+  providers: [MessageService]
 })
 
 export class CartComponent {
@@ -14,7 +16,8 @@ export class CartComponent {
   total = this.cartService.getTotal();
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private messageService: MessageService
   ) { }
  
   public payPalConfig?: IPayPalConfig;
@@ -26,7 +29,7 @@ export class CartComponent {
   private initConfig(): void {
     this.payPalConfig = {
     currency: 'EUR',
-    clientId: 'AZFNrXnIZxl5kFsRjM5nk9_lzPc-ru12GQ07M59po6n27KnDHih3oKtqWHGG28MW6Z93ty20-P6mopHY',
+    clientId: 'AdoKj9ST1YhKPvuMpMC0BF8WLoGXuAzjTpHQ2-MeZyQYJYhcK-VytrVyyFvDRj4R_8z7H57n5iyeP_XY',
     createOrderOnClient: (data) => <ICreateOrderRequest>{
       intent: 'CAPTURE',
       purchase_units: [
@@ -63,6 +66,10 @@ export class CartComponent {
       layout: 'vertical'
     },
     onApprove: (data, actions) => {
+      this.messageService.add({
+        severity: "success",
+        detail: "Compra exitosa",
+      });
       console.log('onApprove - transaction was approved, but not authorized', data, actions);
       actions.order.get().then((details: any) => {
         console.log('onApprove - you can get full order details inside onApprove: ', details);

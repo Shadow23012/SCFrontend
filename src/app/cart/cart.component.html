@@ -13,4 +13,6 @@
   <span style="text-align:right; color:red">Total ={{total | currency}}</span>
 </div>
 
-<ngx-paypal [config]="payPalConfig"></ngx-paypal>
+<ngx-paypal [config]="payPalConfig">
+  <p-toast position="top-center" style="position: absolute;top: 40px; left: 40px;"> </p-toast>
+</ngx-paypal>
